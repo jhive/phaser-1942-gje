@@ -10,38 +10,50 @@ var config = {
         },
         scene: {
             preload: preload,
-            create: create
+            create: create,
+						update: update
         }
     };
 
     var game = new Phaser.Game(config);
+		var plane;
 
     function preload ()
     {
-        this.load.setBaseURL('http://labs.phaser.io');
+				this.load.spritesheet('plane', './assets/plane.png', {frameWidth:64, frameHeight:66, startFrame:0, endFrame:2})
 
-        this.load.image('sky', 'assets/skies/space3.png');
-        this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-        this.load.image('red', 'assets/particles/red.png');
     }
 
     function create ()
     {
-        this.add.image(400, 300, 'sky');
+        //this.add.image(400, 300, 'sky');
 
-        var particles = this.add.particles('red');
+				plane = this.add.sprite(400,300, 'plane');
 
-        var emitter = particles.createEmitter({
-            speed: 200,
-            scale: { start: 1, end: 0 },
-            blendMode: 'ADD'
-        });
+			this.anims.create({
+				key: "fly",
+				frameRate: 30,
+				frames: this.anims.generateFrameNumbers("plane", {start: 0, end: 2}),
+				repeat: -1
+			});
+				plane.play("fly");
 
-        var logo = this.physics.add.image(400, 100, 'logo');
+        //var particles = this.add.particles('red');
 
-        logo.setVelocity(0, 200);
-        logo.setBounce(1, 1);
-        logo.setCollideWorldBounds(true);
+        //var emitter = particles.createEmitter({
+            //speed: 200,
+            //scale: { start: 1, end: 0 },
+            //blendMode: 'ADD'
+        //});
 
-        emitter.startFollow(logo);
+        //logo = this.physics.add.image(400, 100, 'logo');
+
+        //logo.setVelocity(0, 200);
+        //logo.setBounce(1, 1);
+        //logo.setCollideWorldBounds(true);
+
+        //emitter.startFollow(logo);
     }
+
+		function update(time, delta){
+		}
