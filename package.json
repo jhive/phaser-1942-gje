@@ -1,0 +1,17 @@
+{
+  "name": "1942-gamejam-demo",
+  "version": "1.0.0",
+  "description": "Game Jam Experiment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@phaserjs/phaser": "^0.2.2"
+  },
+  "dependencies": {
+    "bitecs": "^0.3.38"
+  }
+}
